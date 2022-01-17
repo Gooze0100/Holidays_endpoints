@@ -1,7 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiOperation, ApiProperty } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiParam,
+  ApiTags,
+} from '@nestjs/swagger';
+import { type } from 'os';
 import { CountriesService } from './countries.service';
 
+@ApiBearerAuth()
+@ApiTags('countries')
 @Controller('countries')
 export class CountriesController {
   tmp: Array<[]> = [];
@@ -10,7 +18,7 @@ export class CountriesController {
   }
 
   @ApiOperation({ summary: 'Get all supported countries in JSON' })
-  @Get('random')
+  @Get()
   async findAll() {
     return this.countriesService.findAll();
   }

@@ -12,7 +12,7 @@ export class ByDayService {
     private readonly httpService: HttpService,
   ) {}
 
-  findAll(date: number, country: string): Observable<string> {
+  findAll(date: string, country: string): Observable<string> {
     return this.httpService
       .get(
         ` https://kayaposoft.com/enrico/json/v2.0?action=isPublicHoliday&date=${date}&country=${country}`,

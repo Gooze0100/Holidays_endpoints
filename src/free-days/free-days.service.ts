@@ -25,11 +25,9 @@ export class FreeDaysService {
             map((response) => response.data),
             map((data) => {
               const string = JSON.stringify(data);
-
               if (data.isWorkDay === false) {
                 cnt++;
               }
-              console.log(cnt);
               return string;
             }),
           );
