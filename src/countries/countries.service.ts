@@ -36,7 +36,7 @@ export class CountriesService {
   }
 
   async getOneById(id: number): Promise<Countries> {
-    return await this.countriesRepository.findOneOrFail(id); // select * from user where user id = id, return nothing
+    return await this.countriesRepository.findOneOrFail(id); // select * from user where user id = id
   }
 
   createCountry(countries: string): Promise<Countries> {

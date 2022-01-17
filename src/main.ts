@@ -6,7 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Mediapark Junior Node.js developer')
+    .setTitle('Mediapark Junior Node.js developer API')
     .setDescription('The Mediapark endpoints')
     .setVersion('1.0')
     .build();

@@ -6,11 +6,17 @@ export class ByDay {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: '01-01-2021',
+    description: 'Requested date',
+  })
   @Column()
   date: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'free day',
+    description: "Response of day's type",
+  })
   @Column()
   status: string;
 }

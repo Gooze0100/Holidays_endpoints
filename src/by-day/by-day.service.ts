@@ -21,7 +21,6 @@ export class ByDayService {
         map((response) => response.data),
         map((data) => {
           if (data.isPublicHoliday === false) {
-            console.log('ateinam1');
             this.httpService
               .get(
                 ` https://kayaposoft.com/enrico/json/v2.0?action=isWorkDay&date=${date}&country=${country}`,
@@ -29,9 +28,6 @@ export class ByDayService {
               .pipe(
                 map((response) => response.data),
                 map((data) => {
-                  console.log('ateinam2');
-                  console.log(data);
-
                   if (data.isWorkDay === false) {
                     return 'free day';
                   } else {
@@ -46,25 +42,6 @@ export class ByDayService {
           }
         }),
       );
-    // const isWorkDay = this.httpService
-    //   .get(
-    //     ` https://kayaposoft.com/enrico/json/v2.0?action=isWorkDay&date=${date}&country=${country}`,
-    //   )
-    //   .pipe(
-    //     map((response) => response.data),
-    //     map((data) => {
-    //       return data;
-    //     }),
-    //   );
-
-    // console.log(
-    //   isPublicHoliday.forEach((a) => {
-    //     return a;
-    //   }),
-    // );
-    // console.log(isWorkDay);
-
-    // return isPublicHoliday;
   }
 
   getAll(): Promise<ByDay[]> {

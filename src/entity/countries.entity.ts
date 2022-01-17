@@ -6,7 +6,10 @@ export class Countries {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Lithuania',
+    description: 'String of supported countries list',
+  })
   @Column()
   countries: string;
 }

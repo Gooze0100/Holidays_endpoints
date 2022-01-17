@@ -6,15 +6,24 @@ export class FreeDays {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 2021,
+    description: 'Requested year',
+  })
   @Column()
   year: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'ltu',
+    description: 'Requested country',
+  })
   @Column()
   country: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 8,
+    description: 'Counted maximum number of free days',
+  })
   @Column()
   maxDaysInRow: number;
 }

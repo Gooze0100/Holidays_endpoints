@@ -14,18 +14,27 @@ export class FreeDaysService {
   ) {}
 
   findAll(year: number, country: string): Observable<string> {
-    return this.httpService
-      .get(
-        `https://kayaposoft.com/enrico/json/v2.0?action=isWorkDay&date=01-01-${year}&country=${country}`,
-      )
-      .pipe(
-        map((response) => response.data),
-        map((data) => {
-          const string = JSON.stringify(data);
+    let cnt = 0;
+    for (let i = 1; i <= 12; i++) {
+      for (let j = 1; j <= 31; j++) {
+        return this.httpService
+          .get(
+            `https://kayaposoft.com/enrico/json/v2.0?action=isWorkDay&date=${j}-${i}-${year}&country=${country}`,
+          )
+          .pipe(
+            map((response) => response.data),
+            map((data) => {
+              const string = JSON.stringify(data);
 
-          return string;
-        }),
-      );
+              if (data.isWorkDay === false) {
+                cnt++;
+              }
+              console.log(cnt);
+              return string;
+            }),
+          );
+      }
+    }
   }
 
   getAll(): Promise<FreeDays[]> {
