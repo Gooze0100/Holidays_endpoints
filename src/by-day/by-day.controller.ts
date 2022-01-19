@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Header, Param } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { ByDayService } from './by-day.service';
 
@@ -23,6 +23,7 @@ export class ByDayController {
     summary: 'Specific day status(workday, free day, holiday)  in JSON',
   })
   @Get(':date&&:country')
+  @Header('Content-type', 'application/json')
   async findAll(@Param() params) {
     return this.byDayService.findAll(params.date, `${params.country}`);
   }
