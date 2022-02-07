@@ -19,12 +19,12 @@ export class ByDayService {
   ): Observable<AxiosResponse<string>> {
     return this.httpService
       .get(
+        // TODO: add region options
         `https://kayaposoft.com/enrico/json/v2.0?action=isPublicHoliday&date=${date}&country=${country}`,
       )
       .pipe(
         map((value) => value.data),
         map((data) => {
-          console.log(data.json());
           return data;
         }),
       );
@@ -41,8 +41,6 @@ export class ByDayService {
       .pipe(
         map((value) => value.data),
         map((data) => {
-          console.log(data.json());
-
           return data;
         }),
       );
